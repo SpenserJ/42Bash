@@ -45,7 +45,8 @@ GIT_VERSION=$(curl -silent http://git-scm.com/ | sed -n '/id="ver"/ s/.*v\([0-9]
 
 if [ `command -v git` ]; then
   GIT_INSTALLED=`git --version`
-  if [ ${GIT_INSTALLED#git version } = $GIT_VERSION ]; then
+  GIT_INSTALLED=${GIT_INSTALLED#git version }
+  if [ $GIT_INSTALLED = $GIT_VERSION ]; then
     echo "Git is already installed ($GIT_INSTALLED) and up to date ($GIT_VERSION)."
     exit 0
   fi
