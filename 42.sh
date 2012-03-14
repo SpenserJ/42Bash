@@ -19,7 +19,7 @@ set -e
 ##################################
 
 read -p "Install Git? [Y/n] "
-[[ ${REPLY:0:1} = [Yy] ]] && GIT=true || GIT=false
+[[ ${REPLY:0:1} = [Nn] ]] && GIT=false || GIT=true
 
 #########################################################
 ### Create a temporary directory for the source files ###
