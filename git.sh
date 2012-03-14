@@ -6,7 +6,7 @@
 #
 # Instructions:
 #
-# 1. bash -s stable < <(curl -s URLGOESHERE)
+# 1. bash -s stable < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
 # 2. Rejoice
 
 ###############################
