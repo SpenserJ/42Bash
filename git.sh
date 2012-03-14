@@ -72,5 +72,8 @@ sudo make install
 ############################
 ### Clean up and go home ###
 ############################
+
+echo "Git has installed correctly. If the version below does not read $GIT_VERSION, please remove old version of git."
+git --version
 cd ~
 rm -rf $TMP
