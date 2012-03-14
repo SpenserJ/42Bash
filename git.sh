@@ -6,7 +6,7 @@
 #
 # Instructions:
 #
-# 1. bash < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
+# 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
 # 2. Rejoice
 
 ###############################

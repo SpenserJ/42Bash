@@ -6,7 +6,7 @@
 #
 # Instructions:
 #
-# 1. bash -s stable < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/42.sh)
+# 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/42.sh)
 # 2. Rejoice
 
 ###############################
