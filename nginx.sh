@@ -15,16 +15,11 @@
 
 [ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
-##############################################
-### What /tmp directory do we want to use? ###
-##############################################
+#################################
+### Prepare the tmp directory ###
+#################################
 
 set_tmp_directory 'nginx'
-
-#########################################################
-### Create a temporary directory for the source files ###
-#########################################################
-
 install_pre $APPTMP
 
 ######################################

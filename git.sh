@@ -9,28 +9,18 @@
 # 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
 # 2. Rejoice
 
-###############################
-### If an error occurs, die ###
-###############################
-set -e
+#######################################
+### Load our general functions file ###
+#######################################
 
-##############################################
-### What /tmp directory do we want to use? ###
-##############################################
+[ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
-if [ "$1" != "" ]; then
-  TMP=${1%/}/git
-else
-  TMP=/tmp/42Bash-Git
-fi
+#################################
+### Prepare the tmp directory ###
+#################################
 
-#########################################################
-### Create a temporary directory for the source files ###
-#########################################################
-
-rm -rf $TMP
-mkdir $TMP
-cd $TMP
+set_tmp_directory 'git'
+install_pre $APPTMP
 
 ################################################
 ### Look up the latest stable release of Git ###
@@ -76,5 +66,4 @@ sudo make install
 
 echo "Git has installed correctly. If the version below does not read $GIT_VERSION, please remove old version of git."
 git --version
-cd ~
-rm -rf $TMP
+install_post $APPTMP
