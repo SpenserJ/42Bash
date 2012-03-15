@@ -9,11 +9,17 @@
 # 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
 # 2. Rejoice
 
+#################################################################################
+### While loop in case we need to cancel execution without killing the parent ###
+#################################################################################
+
+while true; do
+
 #######################################
 ### Load our general functions file ###
 #######################################
 
-[ $FUNCTIONS_LOADED ] || source functions.sh #<(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
+[ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
 #################################
 ### Prepare the tmp directory ###
@@ -38,7 +44,7 @@ if [ `command -v git` ]; then
   GIT_INSTALLED=${GIT_INSTALLED#git version }
   if [ $GIT_INSTALLED = $GIT_VERSION ]; then
     echo "Git is already installed ($GIT_INSTALLED) and up to date ($GIT_VERSION)."
-    exit 0
+    break
   fi
   echo "You currently have Git $GIT_INSTALLED installed, and $GIT_VERSION is the newest. Updating now."
 fi
@@ -80,3 +86,9 @@ else
   exit 1
 fi
 install_post $APPTMP
+
+#####################################################################
+### End of our while loop for safely ending execution prematurely ###
+#####################################################################
+
+done
