@@ -9,10 +9,11 @@
 # 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/42.sh)
 # 2. Rejoice
 
-###############################
-### If an error occurs, die ###
-###############################
-set -e
+#######################################
+### Load our general functions file ###
+#######################################
+
+[ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
 ##################################
 ### Ask what we should install ###
@@ -29,20 +30,17 @@ read -p "Install Nginx? [Y/n] "
 #########################################################
 
 TMP=/tmp/42Bash
-rm -rf $TMP
-mkdir -p $TMP
-cd $TMP
+install_pre $TMP
 
 #################################
 ### Proceed with installation ###
 #################################
 
-if $GIT; then bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh); fi
-if $NGINX; then source /home/spenser/nginx.sh; fi
-#bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh); fi
+[ $GIT ]          && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
+[ $NGINX ]        && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh)
 
 ############################
 ### Clean up and go home ###
 ############################
-cd ~
-rm -rf $TMP
+
+install_post $TMP

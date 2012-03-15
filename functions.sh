@@ -33,14 +33,14 @@ set_tmp_directory() {
 }
 
 install_pre() {
-  rm -rf $APPTMP
-  mkdir $APPTMP
-  cd $APPTMP
+  rm -rf $1
+  mkdir $1
+  cd $1
 }
 
 install_post() {
   cd ~
-  rm -rf $APPTMP
+  rm -rf $1
 }
 
 ############################################

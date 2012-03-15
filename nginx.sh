@@ -13,7 +13,7 @@
 ### Load our general functions file ###
 #######################################
 
-[ $FUNCTIONS_LOADED ] || source /home/spenser/functions.sh
+[ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
 ##############################################
 ### What /tmp directory do we want to use? ###
@@ -25,7 +25,7 @@ set_tmp_directory 'nginx'
 ### Create a temporary directory for the source files ###
 #########################################################
 
-install_pre
+install_pre $APPTMP
 
 ######################################
 ### Confirm that curl is installed ###
@@ -97,4 +97,4 @@ fi
 
 echo "Nginx has installed correctly. If the version below does not read $NGINX_VERSION, please remove old version of Nginx."
 nginx -v
-install_post
+install_post $APPTMP
