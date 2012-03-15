@@ -98,4 +98,5 @@ install_post $APPTMP
 ### End of our while loop for safely ending execution prematurely ###
 #####################################################################
 
+break
 done
