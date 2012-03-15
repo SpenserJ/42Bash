@@ -9,6 +9,12 @@
 # 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh)
 # 2. Rejoice
 
+#################################################################################
+### While loop in case we need to cancel execution without killing the parent ###
+#################################################################################
+
+while true; do
+
 #######################################
 ### Load our general functions file ###
 #######################################
@@ -38,7 +44,7 @@ if [ `command -v nginx` ]; then
   echo "Due to limitations in how Nginx displays it's version number, we cannot automatically detect your version."
   nginx -v
   read -p "Does the above version match $NGINX_VERSION? [y/N] "
-  [[ ${REPLY:0:1} = [Yy] ]] && exit
+  [[ ${REPLY:0:1} = [Yy] ]] && break
 fi
 
 #########################################
@@ -77,7 +83,7 @@ if [ -f /usr/local/nginx/sbin/nginx ]; then
   if [ ! -f /usr/local/sbin/nginx ]; then sudo ln -s /usr/local/nginx/sbin/nginx /usr/local/sbin/nginx; fi
 else
   echo "Something has gone horribly wrong with the Nginx install."
-  exit
+  exit 1
 fi
 
 ############################
@@ -87,3 +93,9 @@ fi
 echo "Nginx has installed correctly. If the version below does not read $NGINX_VERSION, please remove old version of Nginx."
 nginx -v
 install_post $APPTMP
+
+#####################################################################
+### End of our while loop for safely ending execution prematurely ###
+#####################################################################
+
+done
