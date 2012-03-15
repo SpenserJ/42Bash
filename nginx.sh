@@ -9,6 +9,12 @@
 # 1. bash <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh)
 # 2. Rejoice
 
+#######################################
+### Load our general functions file ###
+#######################################
+
+source functions.sh
+
 ###############################
 ### If an error occurs, die ###
 ###############################
@@ -62,10 +68,7 @@ fi
 ### Install prerequisites via apt-get ###
 #########################################
 
-PREREQUISITES='build-essential autoconf gettext cmake ncurses-dev libtool libssl-dev libpcre3-dev'
-# This command doesn't seem to be working reliably. Need to replace it
-# dpkg-query -W $PREREQUISITES >/dev/null || 
-sudo apt-get -y install $PREREQUISITES
+install_dependencies 'build-essential autoconf gettext cmake libncurses5-dev libtool libssl-dev libpcre3-dev'
 
 ###########################
 ### Create the WWW user ###
