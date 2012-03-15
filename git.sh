@@ -13,7 +13,7 @@
 ### Load our general functions file ###
 #######################################
 
-[ $FUNCTIONS_LOADED ] || source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
+[ $FUNCTIONS_LOADED ] || source functions.sh #<(curl -s https://raw.github.com/SpenserJ/42Bash/master/functions.sh)
 
 #################################
 ### Prepare the tmp directory ###
@@ -43,6 +43,12 @@ if [ `command -v git` ]; then
   echo "You currently have Git $GIT_INSTALLED installed, and $GIT_VERSION is the newest. Updating now."
 fi
 
+#########################################
+### Install prerequisites via apt-get ###
+#########################################
+
+install_dependencies "$BUILD_DEPENDENCIES zlib1g-dev"
+
 #################################################
 ### Download the latest stable release of Git ###
 #################################################
@@ -64,6 +70,13 @@ sudo make install
 ### Clean up and go home ###
 ############################
 
-echo "Git has installed correctly. If the version below does not read $GIT_VERSION, please remove old version of git."
-git --version
+GIT_INSTALLED=`git --version`
+GIT_INSTALLED=${GIT_INSTALLED#git version }
+if [ $GIT_INSTALLED = $GIT_VERSION ]; then
+  echo "Git has installed correctly."
+else
+  echo "Git seems to have installed, but you appear to have an old version overriding it. Please remove the following file, and then run 'git --version' to confirm that it is now $GIT_VERSION"
+  which git
+  exit 1
+fi
 install_post $APPTMP

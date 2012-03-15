@@ -45,7 +45,7 @@ fi
 ### Install prerequisites via apt-get ###
 #########################################
 
-install_dependencies 'build-essential autoconf gettext cmake libncurses5-dev libtool libssl-dev libpcre3-dev'
+install_dependencies '$BUILD_DEPENDENCIES libssl-dev libpcre3-dev'
 
 ###########################
 ### Create the WWW user ###
