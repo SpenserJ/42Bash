@@ -21,6 +21,9 @@ set -e
 read -p "Install Git? [Y/n] "
 [[ ${REPLY:0:1} = [Nn] ]] && GIT=false || GIT=true
 
+read -p "Install Nginx? [Y/n] "
+[[ ${REPLY:0:1} = [Nn] ]] && NGINX=false || NGINX=true
+
 #########################################################
 ### Create a temporary directory for the source files ###
 #########################################################
@@ -30,11 +33,12 @@ rm -rf $TMP
 mkdir -p $TMP
 cd $TMP
 
-###################
-### Install Git ###
-###################
+#################################
+### Proceed with installation ###
+#################################
 
 if $GIT; then bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh); fi
+if $NGINX; then bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh); fi
 
 ############################
 ### Clean up and go home ###
