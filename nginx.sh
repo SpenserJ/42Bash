@@ -22,12 +22,6 @@
 set_tmp_directory 'nginx'
 install_pre $APPTMP
 
-######################################
-### Confirm that curl is installed ###
-######################################
-
-command -v curl >/dev/null || (echo "Installing curl..."; sudo apt-get -y install curl)
-
 ##################################################
 ### Look up the latest stable release of Nginx ###
 ##################################################
