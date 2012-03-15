@@ -55,7 +55,7 @@ curl http://git-core.googlecode.com/files/git-$GIT_VERSION.tar.gz | tar -xz
 ####################################
 
 echo "Configuring, making, and installing Git $GIT_VERSION"
-cd $TMP/git-$GIT_VERSION
+cd $APPTMP/git-$GIT_VERSION
 ./configure
 make
 sudo make install
