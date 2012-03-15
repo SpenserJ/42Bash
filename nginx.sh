@@ -13,31 +13,19 @@
 ### Load our general functions file ###
 #######################################
 
-source functions.sh
-
-###############################
-### If an error occurs, die ###
-###############################
-
-set -e
+[ $FUNCTIONS_LOADED ] || source /home/spenser/functions.sh
 
 ##############################################
 ### What /tmp directory do we want to use? ###
 ##############################################
 
-if [ "$1" != "" ]; then
-  TMP=${1%/}/nginx
-else
-  TMP=/tmp/42Bash-Nginx
-fi
+set_tmp_directory 'nginx'
 
 #########################################################
 ### Create a temporary directory for the source files ###
 #########################################################
 
-rm -rf $TMP
-mkdir $TMP
-cd $TMP
+install_pre
 
 ######################################
 ### Confirm that curl is installed ###
@@ -87,7 +75,7 @@ curl http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar -xz
 ######################################
 
 echo "Configuring, making, and installing Nginx $NGINX_VERSION"
-cd $TMP/nginx-$NGINX_VERSION
+cd $APPTMP/nginx-$NGINX_VERSION
 ./configure --with-http_ssl_module --user=www --group=www
 make
 sudo make install
@@ -109,5 +97,4 @@ fi
 
 echo "Nginx has installed correctly. If the version below does not read $NGINX_VERSION, please remove old version of Nginx."
 nginx -v
-cd ~
-rm -rf $TMP
+install_post

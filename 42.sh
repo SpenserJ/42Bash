@@ -38,7 +38,8 @@ cd $TMP
 #################################
 
 if $GIT; then bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh); fi
-if $NGINX; then bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh); fi
+if $NGINX; then source /home/spenser/nginx.sh; fi
+#bash -s $TMP < <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh); fi
 
 ############################
 ### Clean up and go home ###

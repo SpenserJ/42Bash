@@ -1,3 +1,13 @@
+###############################
+### If an error occurs, die ###
+###############################
+
+set -e
+
+##################################################
+### Check for and install missing dependencies ###
+##################################################
+
 install_dependencies() {
   IFS=' ' read -ra DEPENDENCY <<< "$1"
   MISSING=''
@@ -12,3 +22,29 @@ install_dependencies() {
     sudo apt-get -y install $MISSING
   fi
 }
+
+set_tmp_directory() {
+  [ -z "$1" ] && (echo "Please pass set_tmp_directory an application name"; exit)
+  if [ -z $TMP ]; then
+    APPTMP=/tmp/42Bash-$1
+  else
+    APPTMP=$TMP/$1
+  fi
+}
+
+install_pre() {
+  rm -rf $APPTMP
+  mkdir $APPTMP
+  cd $APPTMP
+}
+
+install_post() {
+  cd ~
+  rm -rf $APPTMP
+}
+
+############################################
+### Mark this functions script as loaded ###
+############################################
+
+FUNCTIONS_LOADED=true
