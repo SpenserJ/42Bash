@@ -36,8 +36,8 @@ install_pre $TMP
 ### Proceed with installation ###
 #################################
 
-[ $GIT ]          && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
-[ $NGINX ]        && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh)
+[ $GIT = true ]          && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/git.sh)
+[ $NGINX = true ]        && source <(curl -s https://raw.github.com/SpenserJ/42Bash/master/nginx.sh)
 
 ############################
 ### Clean up and go home ###
