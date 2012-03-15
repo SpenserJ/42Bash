@@ -51,7 +51,7 @@ fi
 ### Install prerequisites via apt-get ###
 #########################################
 
-install_dependencies '$BUILD_DEPENDENCIES libssl-dev libpcre3-dev'
+install_dependencies "$BUILD_DEPENDENCIES libssl-dev libpcre3-dev"
 
 ###########################
 ### Create the WWW user ###
