@@ -32,7 +32,7 @@ install_pre $APPTMP
 ### Install prerequisites via apt-get ###
 #########################################
 
-install_dependencies "$BUILD_DEPENDENCIES zlib1g-dev"
+install_dependencies "$BUILD_DEPENDENCIES zlib1g-dev libssl-dev libcurl4-openssl-dev"
 
 ###################
 ### Install RVM ###
