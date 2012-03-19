@@ -32,7 +32,7 @@ install_pre $APPTMP
 ### Install prerequisites via apt-get ###
 #########################################
 
-install_dependencies $BUILD_DEPENDENCIES
+install_dependencies "$BUILD_DEPENDENCIES zlib1g-dev"
 
 ###################
 ### Install RVM ###
