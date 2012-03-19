@@ -54,7 +54,7 @@ rvmsudo gem install passenger
 ### Confirm that Passenger installed properly ###
 #################################################
 
-if [ ! `command -v passenger-install-nginx-module` ]]; then
+if [ ! `command -v passenger-install-nginx-module` ]; then
   echo "Passenger failed to install properly."
   exit 1
 fi
