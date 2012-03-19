@@ -34,8 +34,7 @@ install_pre $APPTMP
 
 install_dependencies $BUILD_DEPENDENCIES
 
-RUBY_INSTALLED=`ruby -v`
-if [[ ! "$RUBY_INSTALLED" =~ ruby\ ([0-9.]+) ]]; then
+if [ ! `command -v ruby` ]; then
   read -p "We need to install Ruby before installing gem. Shall we do that now? [Y/n] "
   if [[ ${REPLY:0:1} = [Nn] ]]; then
     echo "Alright. Installation will terminate now."
