@@ -78,7 +78,7 @@ curl http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz | tar -xz
 ### Run the Passenger for Nginx installer ###
 #############################################
 
-passenger-install-nginx-module --auto --prefix=/usr/local --nginx-source-dir=$APPTMP/nginx-$NGINX_VERSION --extra-configure-flags='--with-http_ssl_module --user=www --group=www'
+rvmsudo passenger-install-nginx-module --auto --prefix=/usr/local --nginx-source-dir=$APPTMP/nginx-$NGINX_VERSION --extra-configure-flags='--with-http_ssl_module --user=www --group=www'
 
 ############################
 ### Clean up and go home ###
