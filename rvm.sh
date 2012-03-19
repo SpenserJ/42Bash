@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# 42Bash-Git by Spenser Jones
+# 42Bash-RVM by Spenser Jones
 # 
-# About: This script will install the latest stable release of Git
+# About: This script will install the latest stable release of RVM
 #
 # Instructions:
 #
